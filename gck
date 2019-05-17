@@ -1,0 +1,26 @@
+#!/bin/bash
+
+missing() {
+    echo "Missing argument for: branch name."
+    echo "Use --help for more information."
+}
+
+if [ -z "$1" ]; then
+    missing
+else
+    if [ "$1" == "--help" ]; then
+        echo -e "\nChecks out the desired branch."
+        echo "Usage: gc [--help] [-b] <branch_name>"
+        echo -e "   -b      checkout creating local branch\n"
+    else
+        if [ "$1" == "-b" ]; then
+            if [ -z "$2" ]; then
+                missing
+            else
+                git checkout "$1" "$2"
+            fi 
+        else
+            git checkout "$1"
+        fi
+    fi
+fi

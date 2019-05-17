@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    git push
+else
+    if [ "$1" == "--help" ]; then
+        echo -e "\nPushes the content to the current branch."
+        echo "Usage: gps [--help] [-u]"
+        echo "  -u:     Pushs setting the upstream."
+    elif [ "$1" == "-u" ]; then
+        CURR="$(git symbolic-ref --short HEAD)"
+
+        if [ -z "$CURR" ]; then
+            echo "Impossible to push."
+        else
+            git push --set-upstream origin "$CURR"
+        fi
+    fi
+fi

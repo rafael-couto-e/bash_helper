@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    echo "Missing argument for: repo URL."
+    echo "Use --help for more information."
+else
+    if [ "$1" == "--help" ]; then
+        echo -e "\nClones a repository."
+        echo -e "Usage: gcl [--help] <repo_url>\n"
+    else
+        git clone "$1"
+    fi
+fi

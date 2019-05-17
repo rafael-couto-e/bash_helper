@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    bundle exec pod install --repo-update
+else
+    if [ "$1" == "--help" ]; then
+        echo -e "\nRuns bundle exec pod install --repo-update."
+        echo -e "Usage: bpdi [--help]\n"
+    else
+        echo "Unknown command: $1. See --help for more information."
+    fi
+fi

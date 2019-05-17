@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    pod install --repo-update
+else
+    if [ "$1" == "--help" ]; then
+        echo -e "\nRuns pod install --repo-update."
+        echo -e "Usage: pdi [--help]\n"
+    else
+        echo "Unknown command: $1."
+        echo "See --help for more information."
+    fi
+fi

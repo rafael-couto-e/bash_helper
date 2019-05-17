@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+	git pull
+else
+	if [ "$1" == "--help" ]; then
+		echo -e "\nPulls the current remote branch, or a specific branch if informed."
+		echo -e "Usage: gpl [--help] <branch_name>\n"
+	else
+		git pull origin "$1"
+	fi
+fi

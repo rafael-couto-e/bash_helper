@@ -1,0 +1,45 @@
+#!/bin/bash
+
+missing() {
+    echo "Missing at least one of the following: user.name, user.email"
+    echo "Use --help for more information."
+}
+
+cfg() {
+    git config "$1" "$2"
+}
+
+cfgg() {
+    git config --global "$1" "$2"
+}
+
+if [ -z "$1" ]; then
+    missing
+else
+    if [ "$1" == "--help" ]; then
+        echo -e "\nUpdates the user name and email."
+        echo "Usage: gcfg [--help] [-g] [-l] <user.name> <user.email>"
+        echo "  -g          configs globally"
+        echo "  -l          list current config for local repository"
+    else
+        if [ "$1" == "-l" ]; then
+            git config --list
+        elif [ "$1" == "-g" ]; then
+            if [ -z "$2" ]; then
+                missing
+            else
+                cfgg user.name "$2"
+
+                if [ -n "$3" ]; then
+                    cfgg user.email "$3"
+                fi
+            fi
+        else
+            cfg user.name "$1"
+
+            if [ -n "$2" ]; then
+                cfg user.email "$2"
+            fi
+        fi
+    fi
+fi

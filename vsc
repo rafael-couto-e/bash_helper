@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    echo "Missing argument for filename."
+	echo "Use --help for more information."
+else
+    if [ "$1" == "--help" ]; then
+        echo -e "\nOpens a file with Visual Studio Code."
+        echo -e "\nUsage: vsc [--help] <filename>\n"
+    else
+        open -a "Visual Studio Code" "$1" 
+    fi
+fi

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    echo "Missing argument for: pod name."
+    echo "Use --help for more information."
+else
+    if [ "$1" == "--help" ]; then
+        echo -e "\nUpdates the informed pod."
+        echo -e "Usage: pdu [--help] <pod_name>\n"
+    else
+        pod update "$1"
+    fi
+fi

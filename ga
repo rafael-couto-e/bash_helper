@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    git add *
+else
+    if [ "$1" == "--help" ]; then
+        echo -e "\nAdds all files to the upstream."
+        echo -e "Usage: ga [--help]\n"
+    else
+        echo "Unknown command: $1."
+        echo "See --help for more information."
+    fi
+fi

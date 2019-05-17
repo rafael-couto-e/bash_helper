@@ -1,0 +1,28 @@
+#!/bin/bash
+
+missing() {
+    echo "Missing argument for: commit message."
+    echo "Use --help for more information."
+}
+
+CMD=""
+MSG=""
+
+if [ -n "$1" ]; then
+    MSG="$1"
+    if [ "$1" == "--help" ]; then
+        echo -e "\nAdds modified content, commits with a custom message and pushes to upstream."
+        echo "Usage: gacp [--help] [-u] <commit_message>"
+        echo "  -u:     Pushs setting the upstream."
+    elif [ "$1" == "-u" ]; then
+        CMD="$1"
+        MSG="$2"
+    fi
+fi
+
+ga
+gcm "$MSG"
+gps "$CMD"
+
+unset CMD
+unset MSG

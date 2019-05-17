@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    echo "Missing argument for: commit message."
+    echo "Use --help for more information."
+else
+    if [ "$1" == "--help" ]; then
+        echo -e "\nCommits added content with a custom message."
+        echo -e "Usage: gcm [--help] <commit_message>\n"
+    else
+        git commit -m "$1"
+    fi
+fi

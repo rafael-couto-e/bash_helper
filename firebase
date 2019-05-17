@@ -1,0 +1,32 @@
+#!/bin/bash
+
+BASE="com.example"
+
+if [ -z "$1" ]; then
+	echo "Missing argument for: project name."
+	echo "Use --help for more information."
+else
+	if [ "$1" == "--help" ]; then
+		echo -e "\nAdds the connected device to the desired Android project's DebugView console."
+		echo -e "\nUsage: firebase [--help] <project_name>."
+		echo -e "\nCurrently mapped projects:"
+		echo "	foo:		$BASE.foo.debug"
+		echo "	bar:	$BASE.bar.debug\n"
+	else
+		PROJ="$1"
+		PKG="$BASE.$PROJ"
+
+		if [ "$PROJ" == 'foo' ]; then
+			adb shell set prop debug.firebase.analytics.app "$PKG".debug
+		elif [ "$PROJ" == 'bar' ]; then
+			adb shell set prop debug.firebase.analytics.app "$PKG".debug
+		else
+			echo "Invalid argument for: project name"
+		fi
+
+		unset PROJ
+		unset PKG
+	fi
+fi
+
+unset BASE

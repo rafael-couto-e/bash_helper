@@ -1,0 +1,32 @@
+#!/bin/bash
+
+BASE="~/AndroidStudioProjects"
+
+if [ -z "$1" ]; then
+	echo "Missing argument for: project name."
+	echo "Use --help for more information."
+else
+	if [ "$1" == "--help" ]; then
+		echo -e "\nChanges the current directory to the desired Android project's directory."
+		echo -e "\nUsage: . cda [--help] <project_name>."
+		echo -e "\nCurrently mapped projects:"
+		echo "	foo:		$BASE/foo-android/"
+		echo -e "	bar:		$BASE/bar-android/ \n"
+	else
+		PROJ="$1"
+		DIR="$HOME/AndroidStudioProjects"
+
+		if [ "$PROJ" == 'bar' ]; then
+			cd $DIR/foo-android/
+		elif [ "$PROJ" ==  'bar' ]; then
+			cd "$DIR"/bar-android/
+		else
+			echo "Invalid argument for: project name."
+		fi
+
+		unset PROJ
+		unset DIR
+	fi
+fi
+
+unset BASE
