@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    git diff
+else
+    if ["$1" == "--help" ]; then
+        echo -e "\nShows the current workspace's difference to the latest commit."
+        echo -e "Usage: gdf [--help].\n"
+    else
+        echo "Unknown command: $1."
+        echo "See --help for more information."
+    fi
+fi

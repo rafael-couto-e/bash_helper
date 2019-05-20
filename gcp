@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    echo "Missing argument for: branch name."
+    echo "Use --help for more information."
+else
+    if [ "$1" == "--help" ]; then
+        echo -e "\nCherry-picks the desired branch."
+        echo "Usage: gcp [--help] [-b] <branch_name>"
+    else
+        git cherry-pick "$1"
+    fi
+fi
