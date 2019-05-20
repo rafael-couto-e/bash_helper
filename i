@@ -1,6 +1,5 @@
 #!/bin/bash
 
-XCD="open -a Xcode"
 BASE="~/XcodeProjects"
 
 if [ -z "$1" ]; then
@@ -18,9 +17,9 @@ else
 		PROJ="$1"
 
 		if [ "$PROJ" == 'foo' ]; then
-			"$XCD" "$DIR"/foo-ios/Foo.xcodeproj
+			open -a Xcode "$DIR"/foo-ios/Foo.xcodeproj
 		elif [ "$PROJ" == 'bar' ]; then
-			"$XCD" "$DIR"/bar-ios/Bar.xcworkspace
+			open -a Xcode "$DIR"/bar-ios/Bar.xcworkspace
 		else
 			echo "Invalid argument for: project name."
 		fi
@@ -30,5 +29,4 @@ else
 	fi
 fi
 
-unset XCD
 unset BASE
