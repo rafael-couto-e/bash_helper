@@ -15,5 +15,7 @@ else
         else
             git push --set-upstream origin "$CURR"
         fi
+    elif [ "$1" == "-f" ]; then
+        git push --force
     fi
 fi
