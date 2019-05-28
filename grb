@@ -7,6 +7,8 @@ else
     if [ "$1" == "--help" ]; then
         echo -e "\nLocally updates the informed branch and rebases your current branch based on the updated branch."
 		echo -e "\nUsage: grb [--help] <target_branch>.\n"
+    elif [ "$1" == "-c" ]; then
+        git rebase --continue
     else
         CURR="$(git symbolic-ref --short HEAD)"
         TRGT="$1"
